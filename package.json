@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node app.js",
     "monitor": "nodemon app.js",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "tsc:v": "tsc -v"
+    "tsc": "node_modules/typescript/tsc",
+    "tsc:w": "node_modules/typescript/tsc -w",
+    "tsc:v": "node_modules/typescript/tsc -v"
   },
   "author": "",
   "license": "ISC",
