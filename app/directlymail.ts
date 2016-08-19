@@ -33,13 +33,15 @@ let nodemailer = require('nodemailer');
 export function sendmail(){
     let poolConfig: any = {
         pool: true,
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // use SSL
-        // service: 'Gmail',
+        //host: 'smtp.gmail.com',
+        //port: 465,
+        //host:'smtp.163.com',
+        //port: 25,
+        //secure: true, // use SSL
+        service: 'Gmail',
         auth: {
-            user: 'test.nodemailer@gmail.com',
-            pass: 'Nodemailer123'
+            user: 'c766593044@gmail.com',
+            pass: '*****'
         },
         logger: true, // log to console
         debug: true // include SMTP traffic in the logs
@@ -48,7 +50,7 @@ export function sendmail(){
     let defaultMsgFields = {
         // sender info
         //from: 'Sender Name <sender@example.com>',
-        from: 'test.nodemailer@gmail.com',
+        from: 'c766593044@gmail.com',
     };
     let transporter: any = nodemailer.createTransport(poolConfig, defaultMsgFields);
 
@@ -72,32 +74,32 @@ export function sendmail(){
         watchHtml: '<b>Hello</b> to myself',
 
         // An array of attachments
-        attachments: [
-
-            // String attachment
-            {
-                filename: 'notes.txt',
-                content: 'Some notes about this e-mail',
-                contentType: 'text/plain' // optional, would be detected from the filename
-            },
-
-            // Binary Buffer attachment
-            {
-                filename: 'image.png',
-                content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                    '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                    'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
-
-                cid: 'note@example.com' // should be as unique as possible
-            },
-
-            // File Stream attachment
-            {
-                filename: 'nyan cat ✔.gif',
-                path: __dirname + '/assets/nyan.gif',
-                cid: 'nyan@example.com' // should be as unique as possible
-            }
-        ]
+        //attachments: [
+        //
+        //    // String attachment
+        //    {
+        //        filename: 'notes.txt',
+        //        content: 'Some notes about this e-mail',
+        //        contentType: 'text/plain' // optional, would be detected from the filename
+        //    },
+        //
+        //    // Binary Buffer attachment
+        //    {
+        //        filename: 'image.png',
+        //        content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
+        //            '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
+        //            'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
+        //
+        //        cid: 'note@example.com' // should be as unique as possible
+        //    },
+        //
+        //    // File Stream attachment
+        //    {
+        //        filename: 'nyan cat ✔.gif',
+        //        path: __dirname + '/assets/nyan.gif',
+        //        cid: 'nyan@example.com' // should be as unique as possible
+        //    }
+        //]
     };
 
     console.log('Sending Mail');
