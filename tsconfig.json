@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": true,
+        "inlineSourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceRoot": "./",
+        "outDir": "dist"
+    },
+    "exclude": [
+        "node_modules",
+        "spec/cluster.spec.ts",
+        "swagger-code-gen",
+        "patch",
+        "code-gen",
+        "dist"
+    ]
+}

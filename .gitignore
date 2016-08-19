@@ -1,0 +1,11 @@
+node_modules
+dist
+.idea
+*.log
+temps
+logs
+*.bak
+datas
+*.db
+*.zip
+makezip.sh

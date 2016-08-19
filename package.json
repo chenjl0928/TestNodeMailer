@@ -1,0 +1,21 @@
+{
+  "name": "frond-mid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "monitor": "nodemon app.js",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "tsc:v": "tsc -v"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^2.5.0"
+  },
+  "devDependencies": {
+    "jasmine": "2.4.1"
+  }
+}
