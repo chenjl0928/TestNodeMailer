@@ -5,43 +5,19 @@
 import * as inversify from 'inversify';
 import {inject, injectable, KernelModule, multiInject} from 'inversify';
 let nodemailer = require('nodemailer');
-
-
-/**
- * You can use 3 kinds of different approaches when using SMTP
- * normal usage.
- *      No specific configuration needed. For every e-mail a new SMTP connection is created and message is sent immediately.
- *      Used when the amount of sent messages is low.
- *      eg:var smtpConfig = {
- *          host: 'smtp.gmail.com',
- *          port: 465,
- *          secure: true, // use SSL
- *          auth: {
- *              user: 'user@gmail.com',
- *              pass: 'pass'
- *           }
- *      };
- * pooled usage.
- *      Set pool option to true to use it. A fixed amount of pooled connections are used to send messages.
- *      Useful when you have a large number of messages that you want to send in batches.
- * direct usage.
- *      Set direct option to true to use it. SMTP connection is opened directly to recipients MX server,
- *      skipping any local SMTP relays. useful when you do not have a SMTP relay to use.
- *      Riskier though since messages from untrusted servers usually end up in the Spam folder.
- */
-
 export function sendmail(){
     let poolConfig: any = {
         pool: true,
         //host: 'smtp.gmail.com',
-        //port: 465,
-        //host:'smtp.163.com',
+        host:'smtp.163.com',
+        port: 465,
         //port: 25,
-        //secure: true, // use SSL
-        service: 'Gmail',
+        secure: true, // use SSL
+        //service: 'Gmail',
         auth: {
-            user: 'c766593044@gmail.com',
-            pass: '*****'
+            //user: 'c766593044@gmail.com',
+            user: 'iq_storm@163.com',
+            pass:'Aa123456'
         },
         logger: true, // log to console
         debug: true // include SMTP traffic in the logs
@@ -50,7 +26,8 @@ export function sendmail(){
     let defaultMsgFields = {
         // sender info
         //from: 'Sender Name <sender@example.com>',
-        from: 'c766593044@gmail.com',
+        from: 'iq_storm@163.com',
+        //from: 'c766593044@gmail.com',
     };
     let transporter: any = nodemailer.createTransport(poolConfig, defaultMsgFields);
 
@@ -61,7 +38,7 @@ export function sendmail(){
         to: '"chenjiulong" <chenjl@lzt.com.cn>',
 
         // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔', //
+        subject: 'Nodemailer is unicode friendly 2✔', //
 
         // plaintext body
         text: 'Hello to myself!',
