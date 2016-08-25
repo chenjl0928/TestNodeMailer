@@ -1,21 +1,23 @@
 {
-  "name": "frond-mid",
+  "name": "TestNodeMailer",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "monitor": "nodemon app.js",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "tsc:v": "tsc -v"
+    "tsc": "node_modules/typescript/tsc",
+    "tsc:w": "node_modules/typescript/tsc -w",
+    "tsc:v": "node_modules/typescript/tsc -v"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemailer": "^2.5.0"
+    "inversify": "^2.0.0-rc.10",
+    "nodemailer": "^2.5.0",
+    "reflect-metadata": "^0.1.8"
   },
   "devDependencies": {
-    "jasmine": "2.4.1"
+    "inversify-dts": "^2.0.0"
   }
 }

@@ -11,10 +11,6 @@
     },
     "exclude": [
         "node_modules",
-        "spec/cluster.spec.ts",
-        "swagger-code-gen",
-        "patch",
-        "code-gen",
         "dist"
     ]
 }

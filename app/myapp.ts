@@ -1,55 +1,38 @@
 /**
- * Created by Administrator on 2016/08/18.
+ * Created by Chenjiulong on 2016/08/18.
  */
 
+import "reflect-metadata";
 import * as mid from '../mid';
-import {SendMailOptions} from 'nodemailer';
+import * as inversify from 'inversify';
 
-// Message object
-let message: SendMailOptions = {
+export const kernel = new inversify.Kernel();
+kernel.bind('Kernel').toConstantValue(kernel);
+kernel.load(mid.loadMailModule(mid.myAppSmtpOptions,mid.myAppMessageFields));
 
-    // Comma separated list of recipients
-    to: '"chenjiulong" <chenjl@lzt.com.cn>',
+// 1.send mail
+let mailMgr: mid.MailManager = kernel.get<mid.MailManager>('MailManager');
+//
+mailMgr.sendSimpleMail('test hello world', 'the context of hello world');
 
-    // Subject of the message
-    subject: 'Nodemailer is unicode friendly ✔', //
 
-    // plaintext body
-    text: 'Hello to myself!',
-
-    // HTML body
-    html: '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-    '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
-    // Apple Watch specific HTML body
-    //watchHtml: '<b>Hello</b> to myself',
-
-    // An array of attachments
-    //attachments: [
-    //
-    //    // String attachment
-    //    {
-    //        filename: 'notes.txt',
-    //        content: 'Some notes about this e-mail',
-    //        contentType: 'text/plain' // optional, would be detected from the filename
-    //    },
-    //
-    //    // Binary Buffer attachment
-    //    {
-    //        filename: 'image.png',
-    //        content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-    //            '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-    //            'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
-    //
-    //        cid: 'note@example.com' // should be as unique as possible
-    //    },
-    //
-    //    // File Stream attachment
-    //    {
-    //        filename: 'nyan cat ✔.gif',
-    //        path: __dirname + '/assets/nyan.gif',
-    //        cid: 'nyan@example.com' // should be as unique as possible
-    //    }
-    //]
+// 2.send a template mail
+let template = {
+    subject: 'This template is used for the {{mysubject}} field',
+    //text: 'This template is used for the {{mytext}} field',
+    html: '<div><strong>{{myhtml}}</strong> is an object with template strings for built-in renderer or an <a href="https://github.com/niftylettuce/node-email-templates">EmailTemplate</a> object for more complex rendering</div>'
 };
-mid.sendmail(message);
+
+let context: any = {
+    mysubject : 'hello world subject',
+    //mytext : 'hello world text',
+    myhtml : 'templates'
+}
+
+let maildata: mid.ISendMailOptions = {
+    from: mid.defaultAuthGmail,
+    to:mid.defaultMailTos,
+}
+
+// send template mail
+mailMgr.sendTemplateMail(maildata, template, context, {});
