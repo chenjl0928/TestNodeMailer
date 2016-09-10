@@ -1,7 +1,7 @@
 TestNodemailer
 ===============
 
-make a mail mid ,use the nodemailer moudle to send mail
+make a mail mid ,use the [nodemailer](https://github.com/nodemailer/nodemailer) moudle to send mail
 
 ## 使用nodemailer ##
 
